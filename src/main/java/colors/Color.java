@@ -72,10 +72,20 @@ public class Color {
         return "rgb(%d, %d, %d)".formatted(this.red, this.green, this.blue);
     }
 
+    /**
+     * Represents this color in HEX values.
+     *
+     * @see https://en.wikipedia.org/wiki/Web_colors
+     */
     public String toHex() {
         return "#%02X%02X%02X".formatted(this.red, this.green, this.blue);
     }
 
+    /**
+     * Parses a given HEX formatted color into a Color object.
+     *
+     * @see https://en.wikipedia.org/wiki/Web_colors
+     */
     public static Color parseHex(String hex) {
         int r = Integer.parseInt(hex.substring(1, 3), 16);
         int g = Integer.parseInt(hex.substring(3, 5), 16);
