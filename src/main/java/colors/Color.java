@@ -5,23 +5,24 @@ package colors;
  * blue primary colors of light are added together in various ways to reproduce
  * a broad array of colors. The name of the model comes from the initials of the
  * three additive primary colors, red, green, and blue."
- * 
+ *
  * https://en.wikipedia.org/wiki/RGB_color_model
  */
-public final class Color {
+public class Color {
     private final int red;
     private final int green;
     private final int blue;
 
     /**
      * "8 bits in three color channels with values of 0–255"
-     * 
+     *
      * https://en.wikipedia.org/wiki/RGB_color_model
      */
     public Color(int red, int green, int blue) {
         if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255) {
             throw new IllegalArgumentException("RGB values between 0-255 allowed");
         }
+
         this.red = red;
         this.green = green;
         this.blue = blue;
@@ -41,7 +42,7 @@ public final class Color {
 
     /**
      * Returns a new Color that is darkened by the given percentage.
-     * 
+     *
      * @param percentage 0.0 - 1.0
      * @return Darker color
      */
@@ -54,7 +55,7 @@ public final class Color {
 
     /**
      * Returns a new Color that is lightened by the given percentage.
-     * 
+     *
      * @param percentage 0.0 - 1.0
      * @return Lighter color
      */
