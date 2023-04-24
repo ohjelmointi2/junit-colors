@@ -41,16 +41,29 @@ public class Color {
     }
 
     /**
+     * Inverts dark colors to light colors and vice versa.
+     * 
+     * @return inverted Color
+     */
+    public Color invert() {
+        int r = 255 - this.red;
+        int g = 255 - this.green;
+        int b = 255 - this.blue;
+
+        return new Color(r, g, b);
+    }
+
+    /**
      * Returns a new Color that is darkened by the given percentage.
      *
      * @param percentage 0.0 - 1.0
      * @return Darker color
      */
     public Color darken(double percentage) {
-        int newRed = (int) (red * (1 - percentage));
-        int newGreen = (int) (green * (1 - percentage));
-        int newBlue = (int) (blue * (1 - percentage));
-        return new Color(newRed, newGreen, newBlue);
+        int r = (int) (red * (1 - percentage));
+        int g = (int) (green * (1 - percentage));
+        int b = (int) (blue * (1 - percentage));
+        return new Color(r, g, b);
     }
 
     /**
@@ -60,11 +73,11 @@ public class Color {
      * @return Lighter color
      */
     public Color lighten(double percentage) {
-        int newRed = (int) (red + (255 - red) * percentage);
-        int newGreen = (int) (green + (255 - green) * percentage);
-        int newBlue = (int) (blue + (255 - blue) * percentage);
+        int r = (int) (red + (255 - red) * percentage);
+        int g = (int) (green + (255 - green) * percentage);
+        int b = (int) (blue + (255 - blue) * percentage);
 
-        return new Color(newRed, newGreen, newBlue);
+        return new Color(r, g, b);
     }
 
     @Override

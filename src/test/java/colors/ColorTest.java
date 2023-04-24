@@ -11,48 +11,42 @@ public class ColorTest {
     private final Color black = new Color(0, 0, 0);
 
     @Test
-    public void testCreatingRedColor() {
-        Color red = new Color(255, 0, 0);
+    public void newObjectsCanBeCreatedWithRgbValues() {
+        Color red = new Color(255, 2, 1);
 
         assertEquals(255, red.getRed());
-        assertEquals(0, red.getGreen());
-        assertEquals(0, red.getBlue());
+        assertEquals(2, red.getGreen());
+        assertEquals(1, red.getBlue());
     }
 
     @Test
-    public void testCreatingGreenColor() {
-        Color green = new Color(0, 255, 0);
+    public void invertChangesLightColorsIntoDarkerOnes() {
+        Color light = new Color(5, 10, 15);
+        Color dark = new Color(250, 245, 240);
 
-        assertEquals(0, green.getRed());
-        assertEquals(255, green.getGreen());
-        assertEquals(0, green.getBlue());
+        assertEquals(dark, light.invert());
     }
 
     @Test
-    public void testCreatingBlueColor() {
-        Color blue = new Color(0, 0, 255);
+    public void invertChangesDarkColorsIntoLightOnes() {
+        Color dark = new Color(254, 253, 252);
 
-        assertEquals(0, blue.getRed());
-        assertEquals(0, blue.getGreen());
-        assertEquals(255, blue.getBlue());
+        assertEquals(new Color(1, 2, 3), dark.invert());
     }
 
     @Test
-    public void testDarkeningColor() {
-        // arrange
+    public void darkeningDecreasesRgbValuesByGivenPercent() {
         Color blue = new Color(0, 128, 255);
 
-        // act
         Color darker = blue.darken(0.5);
 
-        // assert
         assertEquals(0, darker.getRed());
         assertEquals(64, darker.getGreen());
         assertEquals(127, darker.getBlue());
     }
 
     @Test
-    public void testLighteningColor() {
+    public void ligteningIncreasesBrightnessWithGivenPercentage() {
         Color blue = new Color(0, 128, 255);
 
         Color lighter = blue.lighten(0.1);
@@ -63,42 +57,43 @@ public class ColorTest {
     }
 
     @Test
-    public void testToString() {
+    public void toStringProducesCssLikeColorString() {
         Color blue = new Color(0, 128, 255);
 
         assertEquals("rgb(0, 128, 255)", blue.toString());
     }
 
     @Test
-    public void testConvertingWhiteToHex() {
+    public void colorCanBeRepresentedWithHexValues() {
         String hex = white.toHex();
 
         assertEquals("#FFFFFF", hex);
     }
 
     @Test
-    public void testConvertingBlackToHex() {
+    public void hexValuesArePaddedWithRightAmountOfZeros() {
         String hex = black.toHex();
 
         assertEquals("#000000", hex);
     }
 
     @Test
-    public void testParsingHexValuesIntoRgb() {
+    public void hexValuesCanBeParsedIntoRGB() {
         Color fromHex = Color.parseHex("#0080FF");
-        Color fromRgb = new Color(0, 128, 255);
 
-        assertEquals(fromRgb, fromHex);
+        Color expected = new Color(0, 128, 255);
+
+        assertEquals(expected, fromHex);
     }
 
-    @Test()
-    public void testColorsCannotBeCreatedWithNegativeValues() {
+    @Test
+    public void colorsCannotBeCreatedWithNegativeValues() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Color(-1, -1, -1);
         });
     }
 
-    @Test()
+    @Test
     public void testColorsCannotBeCreatedWithValuesOver255() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Color(256, 256, 256);
