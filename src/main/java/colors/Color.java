@@ -117,4 +117,11 @@ public class Color {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        // "[Objects.hash] method is useful for implementing Object.hashCode() on
+        // objects containing multiple fields."
+        // https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html#hash-java.lang.Object...-
+        return Objects.hash(red, green, blue);
+    }
 }
