@@ -33,6 +33,7 @@ jobs:
       run: ./mvnw pmd:check
     - name: Archive PMD results
       uses: actions/upload-artifact@v3
+      if: always()
       with:
         name: pmd-report
         path: target/pmd.txt
