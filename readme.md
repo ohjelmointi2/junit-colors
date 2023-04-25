@@ -16,3 +16,16 @@ This sample repository demonstrates JUnit testing with a Color class, that repre
 
 [Class Formatter (Oracle.com)](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Formatter.html)
 
+## How to run the tests?
+
+On Linux/MacOS:
+
+```
+./mvnw test
+```
+
+On Windows:
+
+```
+mvnw.cmd test
+```

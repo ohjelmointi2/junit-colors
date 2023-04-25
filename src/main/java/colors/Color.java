@@ -1,5 +1,7 @@
 package colors;
 
+import java.util.Objects;
+
 /**
  * "The RGB color model is an additive color model in which the red, green and
  * blue primary colors of light are added together in various ways to reproduce
@@ -42,7 +44,7 @@ public class Color {
 
     /**
      * Inverts dark colors to light colors and vice versa.
-     * 
+     *
      * @return inverted Color
      */
     public Color invert() {
@@ -113,5 +115,13 @@ public class Color {
             return this.red == other.red && this.green == other.green && this.blue == other.blue;
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        // "[Objects.hash] method is useful for implementing Object.hashCode() on
+        // objects containing multiple fields."
+        // https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html#hash-java.lang.Object...-
+        return Objects.hash(red, green, blue);
     }
 }
