@@ -31,3 +31,8 @@ jobs:
       run: ./mvnw -B package
     - name: Run PMD check
       run: ./mvnw pmd:check
+    - name: Archive PMD results
+      uses: actions/upload-artifact@v3
+      with:
+        name: pmd-report
+        path: target/pmd.txt
