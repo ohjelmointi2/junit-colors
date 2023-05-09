@@ -1,15 +1,14 @@
 plugins {
-    id 'java-library'
+    id 'java'
     id 'pmd'
 }
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+    sourceCompatibility = 17
+    targetCompatibility = 17
 }
 
-group 'com.example'
+group 'io.github.ohjelmointi2'
 version '1.0-SNAPSHOT'
 description 'junit-colors'
 
@@ -17,21 +16,22 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-tasks.named('test', Test) {
+test {
     useJUnitPlatform()
 
     testLogging {
-        events "passed"
+        showExceptions true
+        showCauses true
+        events "PASSED", "FAILED"
+        showStandardStreams true
     }
 }
 
 pmd {
     consoleOutput = true
-    rulesMinimumPriority = 5
-    ruleSets = ["category/java/errorprone.xml"]
 }
