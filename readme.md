@@ -21,11 +21,11 @@ This sample repository demonstrates JUnit testing with a Color class, that repre
 On Linux/MacOS:
 
 ```
-./mvnw test
+./gradlew check
 ```
 
 On Windows:
 
 ```
-mvnw.cmd test
+gradlew.bat check
 ```

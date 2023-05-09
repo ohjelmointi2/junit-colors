@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 public class ColorTest {
 
-    private final Color white = new Color(255, 255, 255);
-    private final Color black = new Color(0, 0, 0);
+    private static Color white = new Color(255, 255, 255);
+    private static Color black = new Color(0, 0, 0);
 
     @Test
     public void newObjectsCanBeCreatedWithRgbValues() {

@@ -1,7 +1,9 @@
 .classpath
 .project
 target
+build
 bin
 .vscode
 .settings
 .devcontainer
+.gradle

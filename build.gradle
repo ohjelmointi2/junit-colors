@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+    id 'pmd'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+description 'junit-colors'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed"
+    }
+}
+
+pmd {
+    consoleOutput = true
+    rulesMinimumPriority = 5
+    ruleSets = ["category/java/errorprone.xml"]
+}
